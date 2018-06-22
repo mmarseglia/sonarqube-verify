@@ -25,6 +25,11 @@ You can use a sonar-project.properties file at your root folder.
 
 Look at [Analysis Parameters](https://docs.sonarqube.org/display/SONAR/Analysis+Parameters) for available values.
 
+#### Sonarqube Scanner Options
+
+Sonar scanner options must be set using the `SONAR_SCANNER_OPTS` environment variable. This node module will not
+pass any command line options to sonar-scanner.
+
 #### Configuration (CLI)
 Best practices are to not set critical settings in your repository.
 
@@ -38,6 +43,7 @@ This module allows you to use the following environment variables to provide run
  - ```SONAR_GATE_SKIP``` : in case you would like to disable the quality check.
 
 
+
 #### Sample Configuration
 
 ```
@@ -48,6 +54,7 @@ sonar.exclusions=**/node_modules/**
 
 Then run the verify :
 ```
+export SONAR_SCANNER_OPTS="-Xmx512m -Djavax.net.ssl.trustStore=cacerts"
 export SONAR_URL=https://myhost.com/sonar
 export SONAR_LOGIN=01234567890123456
 npm run verify
