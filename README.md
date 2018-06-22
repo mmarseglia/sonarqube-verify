@@ -3,6 +3,8 @@ Launch SonarQube analysis using the sonarqube-scanner npm module by @bellingard 
 
 Tested with [SonarQube 6.5](https://docs.sonarqube.org/display/SONAR/Documentation)
 
+Sonarqube must be accessible via https.
+
 ## Usage
 
 ### Installation
@@ -29,7 +31,7 @@ Best practices are to not set critical settings in your repository.
 For example committing the login token into your sonar-project.properties sould absolutely be avoided.
 
 This module allows you to use the following environment variables to provide runtime parameters :
- - ```SONAR_URL``` : Url of your SonarQube server. Defaults to http://localhost:9000
+ - ```SONAR_URL``` : Url of your SonarQube server. Defaults to https://localhost:9000
  - ```SONAR_LOGIN``` : token or login (in latter case you must not set a password)
  - ```SONAR_PASSWORD``` : (in case you are not using authentication token but you should)
  - ```SONAR_SKIP``` : to disable the sonar analysis
@@ -46,7 +48,7 @@ sonar.exclusions=**/node_modules/**
 
 Then run the verify :
 ```
-export SONAR_URL=http://myhost.com/sonar
+export SONAR_URL=https://myhost.com/sonar
 export SONAR_LOGIN=01234567890123456
 npm run verify
 ```
